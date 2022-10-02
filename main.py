@@ -2,6 +2,7 @@ import tkinter as tk
 from PIL import ImageTk, Image
 from clipMaker import make_clip
 
+
 bgImage = "starBG.jpg"
 
 
@@ -46,8 +47,10 @@ def update_image():
     global bgImage
 
     image2 = Image.open(bgImage).resize((230, 230), Image.ANTIALIAS)
-    test = ImageTk.PhotoImage(image1)
-    label1.config(image=test, )
+
+    test2 = ImageTk.PhotoImage(image2)
+    label1.config(image=test2)
+    label1.image = test2
 
 
 root = tk.Tk()
@@ -91,6 +94,6 @@ test = ImageTk.PhotoImage(image1)
 label1 = tk.Label(image=test)
 label1.image = test
 
-label1.place(x=width / 2 - 230 / 2 + 25, y=50)
+label1.place(x=width / 2 - 230 / 2 + 30, y=50)
 
 root.mainloop()
