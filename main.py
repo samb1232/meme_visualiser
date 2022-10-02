@@ -1,4 +1,5 @@
 import tkinter as tk
+from PIL import ImageTk, Image
 from clipMaker import make_clip
 
 bgImage = "starBG.jpg"
@@ -18,6 +19,8 @@ def btn_sceleton_switch():
     button_choose_fire.config(bg='grey')
     button_choose_sceleton.config(bg='cyan')
 
+    update_image()
+
 
 def btn_star_switch():
     global bgImage
@@ -26,6 +29,8 @@ def btn_star_switch():
     button_choose_fire.config(bg='grey')
     button_choose_sceleton.config(bg='grey')
 
+    update_image()
+
 
 def btn_fire_switch():
     global bgImage
@@ -33,6 +38,16 @@ def btn_fire_switch():
     button_choose_star.config(bg='grey')
     button_choose_fire.config(bg='cyan')
     button_choose_sceleton.config(bg='grey')
+
+    update_image()
+
+
+def update_image():
+    global bgImage
+
+    image2 = Image.open(bgImage).resize((230, 230), Image.ANTIALIAS)
+    test = ImageTk.PhotoImage(image1)
+    label1.config(image=test, )
 
 
 root = tk.Tk()
@@ -70,5 +85,12 @@ button_choose_fire.grid(row=1, column=2, padx=15)
 button_choose_star = tk.Button(buttons_frame, text="⭐", bg='cyan', font=btn_font, command=btn_star_switch)
 button_choose_star.grid(row=1, column=3, padx=15)
 
+image1 = Image.open(bgImage)
+image1 = image1.resize((230, 230), Image.ANTIALIAS)
+test = ImageTk.PhotoImage(image1)
+label1 = tk.Label(image=test)
+label1.image = test
+
+label1.place(x=width / 2 - 230 / 2 + 25, y=50)
 
 root.mainloop()
